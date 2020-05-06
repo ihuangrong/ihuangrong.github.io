@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/05/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+    <title>如何在同一台计算机上同时配置gitlab和github</title>
+    <url>/2020/05/06/how-to-setup-gitlab-and-github-on-the-same-computer/</url>
+    <content><![CDATA[<p>学校交作业用的是Gitlab，平时自己写小项目都用Github。在没有使用本方法前，一直都是笨笨的切换账户。现在可以在同一台电脑上同时配置二者啦，而且拉取或上传库的时候，会自动识别是Gitlab还是Github。6！</p>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>首先你必须装好了Git，不管你此时Git里的账户是Gitlab或者Github，都不影响。下面开始配置：</p>
+<p><strong>00 准备</strong></p>
+<ul>
+<li>学校或公司给的Gitlab账号的<em>邮箱地址</em></li>
+<li>学校或公司给的Gitlab账号的<em>账号名称</em></li>
+<li>你自己的Github账号的<em>地址</em>（不是邮箱，长这样:github.com/账号名称）</li>
+<li>你自己的Github账号的<em>邮箱地址</em></li>
+<li>你自己的Github账号的<em>账号名称</em></li>
+</ul>
+<p><strong>01 生成SSH密钥</strong><br>首先打开文件管理器，到位置”C:/Users/用户名/.ssh/“，一会Gitlab和Github生成的公钥密钥都会在这里。步骤如下：</p>
+<ol>
+<li>打开Gitbash，这里我们先配置Gitlab，写入命令<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"Gitlab账号的邮箱地址"</span></span></span><br></pre></td></tr></table></figure>
+此时肉眼可见文件夹中生成了对应的Gitlab密钥的私钥id_rsa和公钥id_rsa_pub。学过安全的同学都知道我们接下来要用来配置的是公钥id_rsa_pub</li>
+<li>配置Gitlab公钥id_rsa_pub中的内容到学校或公司的Gitlab上<br>打开Gitlab -&gt; 点击自己的头像 -&gt; 下拉菜单有个Settings点进去 -&gt; 点击左侧菜单中的SSH Keys -&gt; 点击绿色按钮Add Key -&gt; 用记事本打开公钥文件，全选复制 -&gt; Title是对密钥的描述，随便起名称；复制的内容粘贴到多行文本框 -&gt; 确定<br>完了你就能看到下方显示的Your SSH keys，配置成功！</li>
+<li>接下来我们配置Github，写入命令<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"Github账号的地址（不是邮箱）"</span><span class="string">" -f ~/.ssh/github_rsa</span></span></span><br></pre></td></tr></table></figure>
+回车后，同样在文件夹中看到了生成的Github私钥github_rsa和公钥github_rsa.pub</li>
+<li>配置Github公钥github_rsa.pub中的内容到自己的Github上<br>过程和上述Gitlab公钥配置一毛一样。</li>
+<li>两边公钥都分别配置成功后，继续在密钥生成的这个位置文件夹中，创建一个config文件，没有后缀，用记事本打开，添加如下配置：<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> gitlab</span></span><br><span class="line">Host gitlab</span><br><span class="line">    HostName gitlab.xxx.com #填学校或公司的gitlab的Host</span><br><span class="line">    User git #不变</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa #这里是Gitlab对应的私钥</span><br><span class="line"><span class="meta">#</span><span class="bash"> githab</span></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com #不变</span><br><span class="line">    User git #不变</span><br><span class="line">    IdentityFile ~/.ssh/github_rsa #这里是Github对应的私钥</span><br></pre></td></tr></table></figure>
+保存文件</li>
+</ol>
+<p><strong>02 测试连接</strong><br>同样在该文件夹下（密钥生成的位置）打开Gitbash运行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -T git@hostName</span></span><br></pre></td></tr></table></figure>
+<p>测试SSH Key对Gitlab和Github的连接</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">... MINGW64 ~/.ssh</span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh -T git@gitlab</span></span><br><span class="line">Welcome to GitLab, xxx!</span><br><span class="line"></span><br><span class="line">... MINGW64 ~/.ssh</span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh -T git@github.com</span></span><br><span class="line">Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<p>出现上面的结果说明连接成功，否则退回去看看哪里弄错了。</p>
+<p><strong>03 配置Git仓库</strong><br>Git的config文件记录了用户账号的基本信息，这里我们通过在不同级别的仓库配置中配置不同的账号，来访问不同的远程仓库。换句话说，Gitlab学校账户我常用，就把global级别的账户配置成Gitlab的账号；Github更多是私人项目，就在单个的本地仓库中配置Github账号。</p>
+<p>Config文件通常有三个位置：</p>
+<ul>
+<li>system（系统级别）：<br>位于Windows下Git的安装目录，包含了适用于系统所有用户和所有库的值，通过‘git config –system’配置。</li>
+<li>global（用户级别）:<br>位于~/.gitconfig，具体到电脑的当前用户，通过传递‘git config –global’配置。</li>
+<li>local（仓库级别）：<br>位于.git/config，特定指向某个单一的库。<br>以上每个级别的值的配置都会重写前一个级别的值。</li>
+</ul>
+<p>因为常用，global级别的git配置我把它设置为学校的Gitlab账号：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">'username'</span> <span class="comment">#Gitlab账号名称</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email <span class="string">'xxx@student.xxx.com'</span> <span class="comment">#Gitlab账号邮箱</span></span></span><br></pre></td></tr></table></figure>
+<p>打开某个个人项目的文件夹，该单独库配置local级别的用户，也就是个人的Github的账号。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">'username'</span> <span class="comment">#Github账号名称</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">'xxx@xxx.com'</span> <span class="comment">#Github账号邮箱</span></span></span><br></pre></td></tr></table></figure>
+<p>之后在该仓库下拉取Github的代码，会通过配置的Host自动识别到<a href="mailto:git@github.com">git@github.com</a>。</p>
+<p><strong>技术总结</strong><br>至此，在同一台计算机上同时配置Gitlab与Github就成功了！基本想法是通过密钥的不同连接不同的账户，另外通过git config不同级别配置不同的Git账户，以后拉取代码库的时候，本地仓库下会自动识别到<a href="mailto:git@github.com">git@github.com</a>，其他仓库都会识别到<a href="mailto:git@gitlab.xxx.com">git@gitlab.xxx.com</a>。</p>
+<p><strong>参考文献</strong><br>感谢：<a href="https://segmentfault.com/a/1190000014626841" target="_blank" rel="noopener">https://segmentfault.com/a/1190000014626841</a></p>
 ]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
   </entry>
 </search>
