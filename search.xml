@@ -117,7 +117,7 @@ Die Chancen für Kinder im deutschen Schulsystem haben sich offenbar verbessert.
       </tags>
   </entry>
   <entry>
-    <title>python-run-result-output-to-csv-file</title>
+    <title>Python将运行结果输出保存到csv文件中</title>
     <url>/2020/05/10/python-run-result-output-to-csv-file/</url>
     <content><![CDATA[<p>经常需要把运行结果写入到.txt或者.csv文件中，写了一个工具类可以把运行结果输出到csv文件中。很完整的工具类代码，可以直接用。</p>
 <a id="more"></a>
@@ -143,7 +143,7 @@ Die Chancen für Kinder im deutschen Schulsystem haben sich offenbar verbessert.
       </tags>
   </entry>
   <entry>
-    <title>python-in-nlp-notes</title>
+    <title>学习NLP用Python编程过程中遇到的问题和解决方案</title>
     <url>/2020/05/10/python-in-nlp-notes/</url>
     <content><![CDATA[<p>这学期一门课是自然语言处理，语言用的Python。这篇记录和总结学习过程中遇到的不会的东西，方便自己日后查看。NLP问题Python编程全部是自己从头学，理论课也就那样吧，听懂个50%。如果有和我一样从头自学NLP的，也许能在这篇中找到自己需要的编程技巧和代码思路。</p>
 <a id="more"></a>
