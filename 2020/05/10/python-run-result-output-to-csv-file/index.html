@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="最幸运的就是拥有老爸老妈，感谢带给我生命和思想。">
+  <meta name="description" content="经常需要把运行结果写入到.txt或者.csv文件中，写了一个工具类可以把运行结果输出到csv文件中。很完整的工具类代码，可以直接用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搞笑老爸：家里遭贼啦">
-<meta property="og:url" content="http://yoursite.com/2020/05/10/funny-dad/index.html">
+<meta property="og:title" content="python-run-result-output-to-csv-file">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/python-run-result-output-to-csv-file/index.html">
 <meta property="og:site_name" content="猫帽子">
-<meta property="og:description" content="最幸运的就是拥有老爸老妈，感谢带给我生命和思想。">
+<meta property="og:description" content="经常需要把运行结果写入到.txt或者.csv文件中，写了一个工具类可以把运行结果输出到csv文件中。很完整的工具类代码，可以直接用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-09T22:24:26.000Z">
-<meta property="article:modified_time" content="2020-05-09T22:24:26.000Z">
+<meta property="article:published_time" content="2020-05-10T17:29:21.000Z">
+<meta property="article:modified_time" content="2020-05-10T17:29:21.000Z">
 <meta property="article:author" content="猫帽子">
-<meta property="article:tag" content="老爸">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="工具类">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/05/10/funny-dad/">
+<link rel="canonical" href="http://yoursite.com/2020/05/10/python-run-result-output-to-csv-file/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>搞笑老爸：家里遭贼啦 | 猫帽子</title>
+  <title>python-run-result-output-to-csv-file | 猫帽子</title>
   
 
 
@@ -166,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/funny-dad/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/python-run-result-output-to-csv-file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -179,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          搞笑老爸：家里遭贼啦
+          python-run-result-output-to-csv-file
         </h1>
 
         <div class="post-meta">
@@ -189,7 +190,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-10 00:24:26" itemprop="dateCreated datePublished" datetime="2020-05-10T00:24:26+02:00">2020-05-10</time>
+              <time title="创建时间：2020-05-10 19:29:21" itemprop="dateCreated datePublished" datetime="2020-05-10T19:29:21+02:00">2020-05-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -197,11 +198,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%89%80%E8%A7%81%E6%89%80%E9%97%BB/" itemprop="url" rel="index"><span itemprop="name">所见所闻</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86-NLP/" itemprop="url" rel="index"><span itemprop="name">自然语言处理 NLP</span></a>
                 </span>
             </span>
 
@@ -223,19 +224,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="note default">
-            <p>最幸运的就是拥有老爸老妈，感谢带给我生命和思想。</p>
-          </div>
-
+        <p>经常需要把运行结果写入到.txt或者.csv文件中，写了一个工具类可以把运行结果输出到csv文件中。很完整的工具类代码，可以直接用。</p>
 <a id="more"></a>
 
-<p>大早上打开手机准备玩宝可梦呢，就看到老爸发来的微信：<br><code>黄蓉昨晚睡着了家中来了贼，早上发现房门开着，检查你的笔记木电脑背盗了。其它没有损失，今后睡觉房门要反锁了。</code><br>？？？三脸问号，天呐！家里遭贼了，好担心老爸。等等……那台旧的笔记本不是老早被我卖了吗……（挠头</p>
-<p>心里的第一反应是：爸爸老了。记性不行了，有点酸鼻子，但是想想他以为家里遭贼了，告诉我的语气又那么平静，就像一则通知，便又放下心来。晚上视频来问问吧。</p>
-<p>玩了一上午宝可梦，罪过啊罪过！吃完饭，到视频的时间了！和老爸视频了十几分钟，全程真的是太搞笑了。</p>
-<p>我  ：家里昨晚遭贼了？<br>老爸：你怎么都晓得了！！<br>我  ：你发微信和我说的 = =<br>老爸：哦哦！我都搞忘记了<br>我  ：电脑被偷了啊？<br>老爸：对！我早上起来一看，大门开着在，我看我窗台香烟，XX的银行卡，再跑到你房间一看！坏了你的笔记本没有了！贼不会白跑一趟的，肯定把笔记本顺走了。<br>我  ：按你性格你应该很难过啊老爸，你咋没反应？<br>老爸：我现在（钱）看开了，那个笔记本最多卖200块钱不。偷了就偷了。你隔壁大妈还让我报警哦，我赶着上班，没时间做笔录，肯定要耗掉我一上午，我还要去帮你姐开门。<br>……笑了许久。告诉老爸事实：那个旧笔记本电脑早被我卖啦！前年就卖了，三百块钱出掉了。<br>老爸：我要吃饭去了啊~不和你聊了。<br>哈哈哈哈哈哈</p>
-<p>打字打到这里的时候发了一条朋友圈，记录这件心酸又搞笑的事。写不下去啦！今晚写代码写到现在，不想陷入感性又悲伤的情绪。人呐，快难过的时候就去睡觉吧，醒来又是开心的一天！</p>
-<p>早点毕业，早点回家，陪老爸，这就是人生的意义。</p>
-<p>醒来再看一眼这篇小记，”爸爸老了”加上”母亲节到了”，真是两颗催泪鱼雷。一边满脑子都是代码和项目，一边心里有总有一块感伤，矛盾中感到人作为社会动物，总是在被迫向前的无力感，对人生的感悟不过是”要开心”三个字。冥冥中都有注定吧，做个好人。</p>
+<p>提供四个方法</p>
+<ul>
+<li>创建.csv文件</li>
+<li>写入一行数据到.csv文件</li>
+<li>从.csv文件读取打印到控制台</li>
+<li>.txt文件转换写入到.csv文件<br>直接上代码了。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">result_save</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_csv</span><span class="params">(self, path, titles)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Create a csv file in the path</span></span><br><span class="line"><span class="string">        :param path: Path</span></span><br><span class="line"><span class="string">        :param titles: The first line of the csv file is the title of each column,</span></span><br><span class="line"><span class="string">        ['CP', 'PERSON_count', 'PERSON_percentage', 'PRODUCT_count', 'PRODUCT_percentage', 'EVENT_count', 'EVENT_percentage']</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># path = "../result/result.csv"</span></span><br><span class="line">        <span class="keyword">with</span> open(path, <span class="string">'w+'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> wf:</span><br><span class="line">            csv_write = csv.writer(wf)</span><br><span class="line">            csv_head = titles</span><br><span class="line">            csv_write.writerow(csv_head)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_csv</span><span class="params">(self, path, row)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Write a line of data to a csv file</span></span><br><span class="line"><span class="string">        :param path: Path</span></span><br><span class="line"><span class="string">        :param row: A line of data,</span></span><br><span class="line"><span class="string">        ['..\\corpus\\W99-0632word.docx.txt', '110', '18.93%', '7', '1.20%', '2']</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">with</span> open(path, <span class="string">'a+'</span>) <span class="keyword">as</span> wf:</span><br><span class="line">            csv_write = csv.writer(wf)</span><br><span class="line">            <span class="comment"># list</span></span><br><span class="line">            data_row = row</span><br><span class="line">            csv_write.writerow(data_row)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read_csv</span><span class="params">(self, path)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Read a csv file, the separator is a comma</span></span><br><span class="line"><span class="string">        :param path: Path</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">with</span> open(path, <span class="string">"r+"</span>) <span class="keyword">as</span> rf:</span><br><span class="line">            csv_read = csv.reader(rf, delimiter=<span class="string">','</span>)</span><br><span class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> csv_read:</span><br><span class="line">                print(line)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">txt2csv</span><span class="params">(self, txt_path, csv_path)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Convert a txt text to a csv file</span></span><br><span class="line"><span class="string">        :param txt_path: txt text path</span></span><br><span class="line"><span class="string">        :param csv_path: csv file path</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">with</span> open(txt_path, <span class="string">"r+"</span>) <span class="keyword">as</span> rf:</span><br><span class="line">            doc = csv.reader(rf)</span><br><span class="line">            <span class="keyword">with</span> open(csv_path, <span class="string">'a+'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> wf:</span><br><span class="line">                out_csv = csv.writer(wf)</span><br><span class="line">                out_csv.writerows(doc)</span><br></pre></td></tr></table></figure>
+
+<p>多说几句，感谢上学期带我的德国大腿，让我感受到代码解耦的快乐。这是一种代码思维，不要在一个文件里既写读取文件，处理数据，又写输出数据等等。可以把文件处理抽出一个工具类，能重复的逻辑代码抽出一个类，这样主类调用他们，逻辑结构更加清晰。</p>
 
     </div>
 
@@ -251,7 +252,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/05/10/funny-dad/" title="搞笑老爸：家里遭贼啦">http://yoursite.com/2020/05/10/funny-dad/</a>
+    <a href="http://yoursite.com/2020/05/10/python-run-result-output-to-csv-file/" title="python-run-result-output-to-csv-file">http://yoursite.com/2020/05/10/python-run-result-output-to-csv-file/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -262,7 +263,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%80%81%E7%88%B8/" rel="tag"># 老爸</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag"># 工具类</a>
           </div>
 
         
@@ -271,13 +273,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/07/deutschlernen-grammatik-satz/" rel="prev" title="每周德语语法：语序句型">
-      <i class="fa fa-chevron-left"></i> 每周德语语法：语序句型
+    <a href="/2020/05/10/python-in-nlp-notes/" rel="prev" title="python-in-nlp-notes">
+      <i class="fa fa-chevron-left"></i> python-in-nlp-notes
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/10/python-in-nlp-notes/" rel="next" title="python-in-nlp-notes">
-      python-in-nlp-notes <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

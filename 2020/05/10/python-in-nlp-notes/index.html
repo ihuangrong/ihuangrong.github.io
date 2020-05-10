@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这学期一门课是自然语言处理，语言用的Python。这篇记录和总结学习过程中遇到的不会的东西，方便自己日后查看。NLP问题Python编程全部是自己从头学，理论课也就那样吧，听懂个50%。如果有和我一样从头自学NLP的，也许能在这篇中找到自己需要的编程技巧和代码思路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-in-nlp-notes">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/python-in-nlp-notes/index.html">
+<meta property="og:site_name" content="猫帽子">
+<meta property="og:description" content="这学期一门课是自然语言处理，语言用的Python。这篇记录和总结学习过程中遇到的不会的东西，方便自己日后查看。NLP问题Python编程全部是自己从头学，理论课也就那样吧，听懂个50%。如果有和我一样从头自学NLP的，也许能在这篇中找到自己需要的编程技巧和代码思路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-10T17:29:00.000Z">
+<meta property="article:modified_time" content="2020-05-10T17:29:00.000Z">
+<meta property="article:author" content="猫帽子">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/10/python-in-nlp-notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python-in-nlp-notes | 猫帽子</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">猫帽子</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/python-in-nlp-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="猫帽子">
+      <meta itemprop="description" content="你要继续努力✨">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猫帽子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-in-nlp-notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-10 19:29:00" itemprop="dateCreated datePublished" datetime="2020-05-10T19:29:00+02:00">2020-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86-NLP/" itemprop="url" rel="index"><span itemprop="name">自然语言处理 NLP</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这学期一门课是自然语言处理，语言用的Python。这篇记录和总结学习过程中遇到的不会的东西，方便自己日后查看。NLP问题Python编程全部是自己从头学，理论课也就那样吧，听懂个50%。如果有和我一样从头自学NLP的，也许能在这篇中找到自己需要的编程技巧和代码思路。</p>
+<a id="more"></a>
+
+<h1 id="Pycharm在创建-py文件时，自动添加文件头注释"><a href="#Pycharm在创建-py文件时，自动添加文件头注释" class="headerlink" title="Pycharm在创建.py文件时，自动添加文件头注释"></a>Pycharm在创建.py文件时，自动添加文件头注释</h1><p>打开PyCharm，在File-&gt;Settings-&gt;Editor-&gt;File and Code Templates-&gt;Python Script里面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">@author: xxx</span></span><br><span class="line"><span class="string">@contact: xxx@xxx.com</span></span><br><span class="line"><span class="string">@software: pycharm</span></span><br><span class="line"><span class="string">@file: $&#123;NAME&#125;.py</span></span><br><span class="line"><span class="string">@time: $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="string">@desc:</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="类和方法注释规范"><a href="#类和方法注释规范" class="headerlink" title="类和方法注释规范"></a>类和方法注释规范</h1><p>直接上代码了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">method</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Beschreibung</span></span><br><span class="line"><span class="string">    :param path: </span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    """</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Python如何实例化类并调用方法"><a href="#Python如何实例化类并调用方法" class="headerlink" title="Python如何实例化类并调用方法"></a>Python如何实例化类并调用方法</h1><p>创建一个.py文件，类A</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_A</span><span class="params">(self)</span>:</span></span><br><span class="line">        a = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+<p>然后在另一个.py文件中，实例化类A并调用方法get_A()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> src.A <span class="keyword">import</span> A</span><br><span class="line">A().get_A()</span><br></pre></td></tr></table></figure>
+<p>这样就行了。</p>
+<h1 id="Python中如何打印小数点后显示两位的百分数"><a href="#Python中如何打印小数点后显示两位的百分数" class="headerlink" title="Python中如何打印小数点后显示两位的百分数"></a>Python中如何打印小数点后显示两位的百分数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">percentage = <span class="string">'&#123;:.2%&#125;'</span>.format(a / b)</span><br></pre></td></tr></table></figure>
+<p>注意如果a是0的话会报”被零除”错误[ZeroDivisionError: division by zero]<br>解决办法是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">global</span> per_value</span><br><span class="line">    per_value = a / b</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    z = <span class="number">0</span></span><br><span class="line">percentage = <span class="string">'&#123;:.2%&#125;'</span>.format(per_value)</span><br></pre></td></tr></table></figure>
+<p>注意这里per_value是局部变量，把它变成全局变量在下面调用的时候才不会报错。否则出现”分配前引用的局部变量”错误：[Error: local variable referenced before assignment]</p>
+<h1 id="Python中写入文本到-txt文件"><a href="#Python中写入文本到-txt文件" class="headerlink" title="Python中写入文本到.txt文件"></a>Python中写入文本到.txt文件</h1><p>两种方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(txt, file=wf) <span class="comment"># 自动换行</span></span><br><span class="line">wf.write(txt) <span class="comment"># 没有换行</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Python中读取文件显示字符集错误"><a href="#Python中读取文件显示字符集错误" class="headerlink" title="Python中读取文件显示字符集错误"></a>Python中读取文件显示字符集错误</h1><p>给error参数传参’ignore’来解决，最方便。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>, errors=<span class="string">'ignore'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    doc = nlp(f.read())</span><br></pre></td></tr></table></figure>
+
+<h1 id="Python中整数转换字符串"><a href="#Python中整数转换字符串" class="headerlink" title="Python中整数转换字符串"></a>Python中整数转换字符串</h1><p>直接<code>str(89)</code>解决。</p>
+<h1 id="Python中获取给定路径的文件夹中所有文件的文件路径"><a href="#Python中获取给定路径的文件夹中所有文件的文件路径" class="headerlink" title="Python中获取给定路径的文件夹中所有文件的文件路径"></a>Python中获取给定路径的文件夹中所有文件的文件路径</h1><p>直接上完整代码了，可以直接当工具类使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">files_bp</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_all_filepath</span><span class="params">(self, path_to_files)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get all path of files in a folder</span></span><br><span class="line"><span class="string">        :param path_to_files: Destination folder path</span></span><br><span class="line"><span class="string">        :return: A list containing the paths of all files in this folder, excluding subfolders in this folder</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        all_files = os.listdir(path_to_files)</span><br><span class="line">        list_filepath = []</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> all_files:</span><br><span class="line">            <span class="keyword">if</span> os.path.isfile(os.path.join(path_to_files, file)):</span><br><span class="line">                list_filepath.append(os.path.join(path_to_files, file))</span><br><span class="line">        <span class="keyword">return</span> list_filepath</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>猫帽子
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/05/10/python-in-nlp-notes/" title="python-in-nlp-notes">http://yoursite.com/2020/05/10/python-in-nlp-notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/NLP/" rel="tag"># NLP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/10/funny-dad/" rel="prev" title="搞笑老爸：家里遭贼啦">
+      <i class="fa fa-chevron-left"></i> 搞笑老爸：家里遭贼啦
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/10/python-run-result-output-to-csv-file/" rel="next" title="python-run-result-output-to-csv-file">
+      python-run-result-output-to-csv-file <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pycharm在创建-py文件时，自动添加文件头注释"><span class="nav-number">1.</span> <span class="nav-text">Pycharm在创建.py文件时，自动添加文件头注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和方法注释规范"><span class="nav-number">2.</span> <span class="nav-text">类和方法注释规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python如何实例化类并调用方法"><span class="nav-number">3.</span> <span class="nav-text">Python如何实例化类并调用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python中如何打印小数点后显示两位的百分数"><span class="nav-number">4.</span> <span class="nav-text">Python中如何打印小数点后显示两位的百分数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python中写入文本到-txt文件"><span class="nav-number">5.</span> <span class="nav-text">Python中写入文本到.txt文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python中读取文件显示字符集错误"><span class="nav-number">6.</span> <span class="nav-text">Python中读取文件显示字符集错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python中整数转换字符串"><span class="nav-number">7.</span> <span class="nav-text">Python中整数转换字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python中获取给定路径的文件夹中所有文件的文件路径"><span class="nav-number">8.</span> <span class="nav-text">Python中获取给定路径的文件夹中所有文件的文件路径</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="猫帽子"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">猫帽子</p>
+  <div class="site-description" itemprop="description">你要继续努力✨</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">猫帽子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
