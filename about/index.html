@@ -12,9 +12,9 @@
 <!-- BEGIN: Unity Compiled Events -->
 <script>
 var markerFound = 0;
-var Model_6_CurrentPoint = 0;
-var Model_6_SubtractTime = 0;
-var Model_6_PointsArray = [new THREE.Vector3(1.10135,0.6335999,0.03875971),new THREE.Vector3(0.7547387,0.6335999,1.182597),new THREE.Vector3(2.48605,0.3924,1.564286),new THREE.Vector3(2.779418,0.3924,0.596158),new THREE.Vector3(2.779417,0.4924,0.5961577),new THREE.Vector3(1.10135,0.5336,0.03875971),new THREE.Vector3(1.10135,0.6335999,0.03875971)];
+var Model_7_CurrentPoint = 0;
+var Model_7_SubtractTime = 0;
+var Model_7_PointsArray = [new THREE.Vector3(-0.4175089,-0.1462277,0.5370454),new THREE.Vector3(-0.7662257,0.9967183,0.5130843),new THREE.Vector3(0.975622,1.387628,0.6333216),new THREE.Vector3(1.270771,0.4202556,0.653602),new THREE.Vector3(1.264693,0.4163102,0.5538648),new THREE.Vector3(-0.4114316,-0.1422825,0.6367826),new THREE.Vector3(-0.4175089,-0.1462277,0.5370454)];
 AFRAME.registerComponent('button', {
 init: function () {
 var elem = document.documentElement;
@@ -73,27 +73,27 @@ fullbutton.addEventListener("click", function (evt) {
             });
 },
 tick: function (totalTime, deltaTime) {
-var Model_6 = document.querySelector("#Model_6");
-var Model_6_Speed = 0.08333334;
-var Model_6_Time = (totalTime - Model_6_SubtractTime) / 1000;
+var Model_7 = document.querySelector("#Model_7");
+var Model_7_Speed = 0.08333334;
+var Model_7_Time = (totalTime - Model_7_SubtractTime) / 1000;
 var dTime = deltaTime / 1000;
 
 if (markerFound == 1) {
-Model_6_Update();
+Model_7_Update();
 }
 
-function Model_6_Update() {
-var newPosition = bezierPath(Model_6_PointsArray[Model_6_CurrentPoint], Model_6_PointsArray[Model_6_CurrentPoint + 1], Model_6_PointsArray[Model_6_CurrentPoint + 2], Model_6_PointsArray[Model_6_CurrentPoint + 3], Model_6_Time *Model_6_Speed);
+function Model_7_Update() {
+var newPosition = bezierPath(Model_7_PointsArray[Model_7_CurrentPoint], Model_7_PointsArray[Model_7_CurrentPoint + 1], Model_7_PointsArray[Model_7_CurrentPoint + 2], Model_7_PointsArray[Model_7_CurrentPoint + 3], Model_7_Time *Model_7_Speed);
 
-if (Model_6_Time*Model_6_Speed>1) {
-Model_6_CurrentPoint += 3;
-Model_6_SubtractTime = totalTime;
-if (Model_6_CurrentPoint >= Model_6_PointsArray.length - 3) {
-Model_6_CurrentPoint = 0;
+if (Model_7_Time*Model_7_Speed>1) {
+Model_7_CurrentPoint += 3;
+Model_7_SubtractTime = totalTime;
+if (Model_7_CurrentPoint >= Model_7_PointsArray.length - 3) {
+Model_7_CurrentPoint = 0;
 }
 }
 
-Model_6.setAttribute('position', {
+Model_7.setAttribute('position', {
 x: newPosition.x,
 y: newPosition.y,
 z: newPosition.z,
@@ -141,8 +141,6 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 <!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
 <video id="Video_Asset_3" autoplay="false" loop crossorigin="anonymous" src="videos/CompleteVideo_Rong.mp4" webkit-playsinline playsinline controls muted></video>
-<a-asset-item id="Model_Asset_obj_6" src="models/model.obj"></a-asset-item>
-<a-asset-item id="Model_Asset_mtl_6" src="models/materials.mtl"></a-asset-item>
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
@@ -150,19 +148,27 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 <!-- END: Add Image Target (marker) -->
 
 <!-- BEGIN: Unity Compiled Objects -->
-<a-plane src="textures/videoframe.png" id="MPlane_0" class="intersectable" width="1.75" height="1" position="0 0.475 -0.486" rotation="340.6738 0 0" color="#FFFFFF" transparent=True
+<a-plane src="textures/videoframe.png" id="MPlane_0" class="intersectable" width="1.75" height="1" position="0 0.01 -1.28" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-plane src="textures/keji.png" id="LPlane_1" class="intersectable" width="1.75" height="1" position="-1.846 0.475 -0.189" rotation="340.6737 -339.813 -8.821382E-06" color="#FFFFFF" transparent=True
+<a-plane src="textures/keji.png" id="LPlane_1" class="intersectable" width="1.75" height="1" position="-1.852563 0.01 0.008696836" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-plane src="textures/keji.png" id="RPlane_2" class="intersectable" width="1.75" height="1" position="1.843 0.475 -0.205" rotation="340.6738 -17.59868 6.785677E-07" color="#FFFFFF" transparent=True
+<a-plane src="textures/keji.png" id="RPlane_2" class="intersectable" width="1.75" height="1" position="1.843 0.01 0.07800001" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-video src="#Video_Asset_3" id="Video_3" class="intersectable" width="1.4" height="0.8" position="0 0.475 -0.413" rotation="340.6738 0 0" color="#FFFFFF" transparent=False
+<a-video src="#Video_Asset_3" id="Video_3" class="intersectable" width="1.4" height="0.8" position="0 0.05 -1.250987" rotation="270 0 0" color="#FFFFFF" transparent=False
 ></a-video>
-<a-plane src="textures/Skills_radar_jpg.png" id="LIPlane_4" class="intersectable" width="1.4" height="0.8" position="-1.807 0.475 -0.128" rotation="340.6737 -339.813 -8.821382E-06" color="#FFFFFF" transparent=True
+<a-plane src="textures/skills_neu.png" id="LIPlane_4" class="intersectable" width="1.4" height="0.8" position="-1.84 0.09 0.01" rotation="270 0 0" color="#FFFFFF" transparent=True
+animation__liplane_4_f0=" property: position;  to: -1.84 0.09 0.01; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f0=" property: rotation;  to: 270 0 0; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f0=" property: width;  to: 1.4; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f0=" property: height;  to: 0.8; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f1=" property: position; from: -1.84 0.09 0.01; to: -1.84 0.03 0.01; dur: 5000; easing: linear; startEvents: animationcomplete__liplane_4_f0, animationcomplete__liplane_4_f2;"
+animation__liplane_4_f2=" property: position; from: -1.84 0.03 0.01; to: -1.84 0.09 0.01; dur: 5000; easing: linear; startEvents: animationcomplete__liplane_4_f1;"
 ></a-plane>
-<a-plane src="textures/info.png" id="RIPlane_5" class="intersectable" width="1.4" height="0.8" position="1.804 0.475 -0.173" rotation="340.6738 -17.59868 6.785677E-07" color="#FFFFFF" transparent=True
+<a-plane src="textures/Skills_radar_jpg.png" id="LITPlane_5" class="intersectable" width="1.4" height="0.8" position="-1.84 0.06 0.01" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-entity obj-model="obj: #Model_Asset_obj_6; mtl: #Model_Asset_mtl_6" id="Model_6" class="intersectable" scale="1.8 1.8 1.8" position="1.354195 0.4 -0.350966" rotation="0 -212.9211 0" color="#ffffff" transparent=False
+<a-plane src="textures/info.png" id="RIPlane_6" class="intersectable" width="1.4" height="0.8" position="1.804 0.05 0.1" rotation="270 0 0" color="#FFFFFF" transparent=True
+></a-plane>
+<a-entity obj-model="obj: #Model_Asset_obj_7; mtl: #Model_Asset_mtl_7" id="Model_7" class="intersectable" scale="1.8 1.8 1.8" position="-0.15 -0.5264336 0.77" rotation="57.01 -270 -94.15501" color="#ffffff" transparent=False
 ></a-entity>
 <!-- END: Unity Compiled Objects -->
 
