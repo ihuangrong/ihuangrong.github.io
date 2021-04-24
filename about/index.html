@@ -14,7 +14,7 @@
 var markerFound = 0;
 var Model_7_CurrentPoint = 0;
 var Model_7_SubtractTime = 0;
-var Model_7_PointsArray = [new THREE.Vector3(0.8,0.25,0),new THREE.Vector3(0.8000001,0.07000005,0.3600001),new THREE.Vector3(-0.7840008,0.06999898,-0.3600002),new THREE.Vector3(-0.7840009,0.2499991,-9.094947E-14),new THREE.Vector3(-0.784001,0.4299991,-0.3600001),new THREE.Vector3(0.7999999,0.4300002,0.3600002),new THREE.Vector3(0.8,0.25,0)];
+var Model_7_PointsArray = [new THREE.Vector3(0.8,0.3600001,4.768372E-08),new THREE.Vector3(0.8,0.18,0),new THREE.Vector3(-0.7840009,0.18,0),new THREE.Vector3(-0.7840009,0.3600001,4.768372E-08),new THREE.Vector3(-0.7840009,0.5400001,9.536743E-08),new THREE.Vector3(0.8,0.5400001,9.536743E-08),new THREE.Vector3(0.8,0.3600001,4.768372E-08)];
 AFRAME.registerComponent('button', {
 init: function () {
 var elem = document.documentElement;
@@ -146,31 +146,31 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
-<a-marker id="marker" type="pattern" preset="custom" src="pattern-rong.patt" url="pattern-rong.patt" emitevents="true" button>
+<a-marker id="marker" type="pattern" preset="custom" src="pattern-me.patt" url="pattern-me.patt" emitevents="true" button>
 <!-- END: Add Image Target (marker) -->
 
 <!-- BEGIN: Unity Compiled Objects -->
-<a-plane src="textures/videoframe.png" id="MPlane_0" class="intersectable" width="1.75" height="1" position="0 0 -1.2" rotation="270 0 0" color="#FFFFFF" transparent=True
+<a-plane src="textures/videoframe.png" id="MPlane_0" class="intersectable" width="1.75" height="1" position="0 0.01 -1.28" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-plane src="textures/keji.png" id="LPlane_1" class="intersectable" width="1.75" height="1" position="-1.8 0 0" rotation="270 0 0" color="#FFFFFF" transparent=True
+<a-plane src="textures/keji.png" id="LPlane_1" class="intersectable" width="1.75" height="1" position="-1.852563 0.01 0.008696836" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-plane src="textures/keji.png" id="RPlane_2" class="intersectable" width="1.75" height="1" position="1.8 0 0" rotation="270 0 0" color="#FFFFFF" transparent=True
+<a-plane src="textures/keji.png" id="RPlane_2" class="intersectable" width="1.75" height="1" position="1.843 0.01 0.07800001" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-video src="#Video_Asset_3" id="Video_3" class="intersectable" width="1.4" height="0.8" position="0 0.05 -1.2" rotation="270 0 0" color="#FFFFFF" transparent=False
+<a-video src="#Video_Asset_3" id="Video_3" class="intersectable" width="1.4" height="0.8" position="0 0.05 -1.250987" rotation="270 0 0" color="#FFFFFF" transparent=False
 ></a-video>
-<a-plane src="textures/Skills_radar_jpg.png" id="LIOnePlane_4" class="intersectable" width="1.4" height="0.8" position="-1.8 0.05 0" rotation="270 0 0" color="#FFFFFF" transparent=True
+<a-plane src="textures/skills_neu.png" id="LIPlane_4" class="intersectable" width="1.4" height="0.8" position="-1.84 0.09 0.01" rotation="270 0 0" color="#FFFFFF" transparent=True
+animation__liplane_4_f0=" property: position;  to: -1.84 0.09 0.01; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f0=" property: rotation;  to: 270 0 0; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f0=" property: width;  to: 1.4; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f0=" property: height;  to: 0.8; dur: 0; easing: linear; startEvents: mousedown;"
+animation__liplane_4_f1=" property: position; from: -1.84 0.09 0.01; to: -1.84 0.03 0.01; dur: 2000; easing: linear; startEvents: animationcomplete__liplane_4_f0, animationcomplete__liplane_4_f2;"
+animation__liplane_4_f2=" property: position; from: -1.84 0.03 0.01; to: -1.84 0.09 0.01; dur: 8000; easing: linear; startEvents: animationcomplete__liplane_4_f1;"
 ></a-plane>
-<a-plane src="textures/skills_neu.png" id="LITwoPlane_5" class="intersectable" width="1.4" height="0.8" position="-1.8 0.1 0" rotation="270 0 0" color="#FFFFFF" transparent=True
-animation__litwoplane_5_f0=" property: position;  to: -1.8 0.1 0; dur: 0; easing: linear; startEvents: mousedown;"
-animation__litwoplane_5_f0=" property: rotation;  to: 270 0 0; dur: 0; easing: linear; startEvents: mousedown;"
-animation__litwoplane_5_f0=" property: width;  to: 1.4; dur: 0; easing: linear; startEvents: mousedown;"
-animation__litwoplane_5_f0=" property: height;  to: 0.8; dur: 0; easing: linear; startEvents: mousedown;"
-animation__litwoplane_5_f2=" property: position; from: -1.8 0.1 0; to: -1.8 0.02 0; dur: 1000; easing: linear; startEvents: animationcomplete__litwoplane_5_f1;"
-animation__litwoplane_5_f4=" property: position; from: -1.8 0.02 0; to: -1.8 0.1 0; dur: 1000; easing: linear; startEvents: animationcomplete__litwoplane_5_f3;"
+<a-plane src="textures/Skills_radar_jpg.png" id="LITPlane_5" class="intersectable" width="1.4" height="0.8" position="-1.84 0.06 0.01" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-plane src="textures/info.png" id="RIPlane_6" class="intersectable" width="1.4" height="0.8" position="1.8 0.05 0" rotation="270 0 0" color="#FFFFFF" transparent=True
+<a-plane src="textures/info.png" id="RIPlane_6" class="intersectable" width="1.4" height="0.8" position="1.804 0.05 0.1" rotation="270 0 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-entity obj-model="obj: #Model_Asset_obj_7; mtl: #Model_Asset_mtl_7" id="Model_7" class="intersectable" scale="1.8 1.8 1.8" position="0.8 0.25 0" rotation="90 -180 0" color="#ffffff" transparent=False
+<a-entity obj-model="obj: #Model_Asset_obj_7; mtl: #Model_Asset_mtl_7" id="Model_7" class="intersectable" scale="1.8 1.8 1.8" position="0.8 0 0" rotation="90 -180 0" color="#ffffff" transparent=False
 ></a-entity>
 <!-- END: Unity Compiled Objects -->
 
